@@ -1,25 +1,26 @@
 <script>
-  // 3D cube spins via CSS; blueprint text boxes branch out from center
+  import ModelViewer from "./ModelViewer.svelte";
+  // Blueprint text boxes branch out from center
 </script>
 
 <div class="hero">
   <div class="center-zone">
     <div class="cube-scene">
-      <div class="cube">
-        <div class="face front"></div>
-        <div class="face back"></div>
-        <div class="face right"></div>
-        <div class="face left"></div>
-        <div class="face top"></div>
-        <div class="face bottom"></div>
-      </div>
+      <ModelViewer />
     </div>
   </div>
 
   <!-- Blueprint branches: lines + label boxes -->
   <svg class="blueprint-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
     <defs>
-      <marker id="arrow" markerWidth="4" markerHeight="4" refX="3" refY="2" orient="auto">
+      <marker
+        id="arrow"
+        markerWidth="4"
+        markerHeight="4"
+        refX="3"
+        refY="2"
+        orient="auto"
+      >
         <path d="M0,0 L4,2 L0,4 Z" fill="var(--blueprint)" opacity="0.8" />
       </marker>
     </defs>
@@ -34,7 +35,9 @@
   <div class="label label-tl blueprint-border accent-red-border">
     <span class="label-id"><span class="accent-red">A-01</span></span>
     <span class="label-title">Core System</span>
-    <span class="label-desc">Primary module · <span class="accent-red">Active</span></span>
+    <span class="label-desc"
+      >Primary module · <span class="accent-red">Active</span></span
+    >
   </div>
   <div class="label label-tr blueprint-border">
     <span class="label-id">B-02</span>
@@ -80,7 +83,9 @@
   }
 
   @media (max-width: 480px) {
-    .hero { padding-left: max(calc(240px + 1.5rem), 1.5rem); }
+    .hero {
+      padding-left: max(calc(240px + 1.5rem), 1.5rem);
+    }
   }
 
   .center-zone {
@@ -93,49 +98,8 @@
 
   .cube-scene {
     perspective: 800px;
-    width: 140px;
-    height: 140px;
-  }
-
-  .cube {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    animation: spin 12s linear infinite;
-  }
-
-  .face {
-    position: absolute;
-    width: 140px;
-    height: 140px;
-    border: 2px solid var(--blueprint);
-    background: rgba(0, 212, 255, 0.05);
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--blueprint-dim);
-    box-shadow: inset 0 0 24px rgba(0, 212, 255, 0.08);
-  }
-
-  .face.front {
-    border-color: var(--accent-red);
-    box-shadow: inset 0 0 24px var(--accent-red-glow), 0 0 20px var(--accent-red-glow);
-  }
-
-  .front  { transform: translateZ(70px); }
-  .back   { transform: rotateY(180deg) translateZ(70px); }
-  .right  { transform: rotateY(90deg) translateZ(70px); }
-  .left   { transform: rotateY(-90deg) translateZ(70px); }
-  .top    { transform: rotateX(90deg) translateZ(70px); }
-  .bottom { transform: rotateX(-90deg) translateZ(70px); }
-
-  @keyframes spin {
-    from { transform: rotateX(-18deg) rotateY(0deg); }
-    to   { transform: rotateX(-18deg) rotateY(360deg); }
+    width: 650px;
+    height: 650px;
   }
 
   .blueprint-lines {
@@ -156,7 +120,9 @@
   }
 
   @keyframes dash {
-    to { stroke-dashoffset: -100; }
+    to {
+      stroke-dashoffset: -100;
+    }
   }
 
   .label {
@@ -164,7 +130,7 @@
     padding: 0.5rem 0.75rem;
     min-width: 120px;
     background: rgba(15, 33, 55, 0.92);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     z-index: 3;
     display: flex;
     flex-direction: column;
@@ -188,12 +154,30 @@
     color: var(--text-muted);
   }
 
-  .label-tl { left: 8%;  top: 18%; }
-  .label-tr { right: 6%;  top: 15%; }
-  .label-mr { right: 4%;  top: 48%; }
-  .label-br { left: 80%; bottom: 8%; }
-  .label-bl { right: 80%; bottom: 12%; }
-  .label-ml { left: 4%;  top: 48%; }
+  .label-tl {
+    left: 8%;
+    top: 18%;
+  }
+  .label-tr {
+    right: 6%;
+    top: 15%;
+  }
+  .label-mr {
+    right: 4%;
+    top: 48%;
+  }
+  .label-br {
+    left: 80%;
+    bottom: 8%;
+  }
+  .label-bl {
+    right: 80%;
+    bottom: 12%;
+  }
+  .label-ml {
+    left: 4%;
+    top: 48%;
+  }
 
   .hero-title {
     position: absolute;
@@ -227,24 +211,44 @@
     font-size: 0.8rem;
     color: var(--blueprint-dim);
     letter-spacing: 0.2em;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
   }
 
   @media (max-width: 768px) {
-    .label { min-width: 100px; padding: 0.4rem 0.5rem; font-size: 0.7rem; }
-    .label-tl { left: 2%; top: 12%; }
-    .label-tr { right: 2%; top: 10%; }
-    .label-mr { right: 2%; top: 50%; }
-    .label-br { left: 72%; bottom: 6%; }
-    .label-bl { right: 72%; bottom: 10%; }
-    .label-ml { left: 2%; top: 50%; }
-    .cube-scene { width: 90px; height: 90px; }
-    .face { width: 90px; height: 90px; }
-    .front  { transform: translateZ(45px); }
-    .back   { transform: rotateY(180deg) translateZ(45px); }
-    .right  { transform: rotateY(90deg) translateZ(45px); }
-    .left   { transform: rotateY(-90deg) translateZ(45px); }
-    .top    { transform: rotateX(90deg) translateZ(45px); }
-    .bottom { transform: rotateX(-90deg) translateZ(45px); }
+    .label {
+      min-width: 100px;
+      padding: 0.4rem 0.5rem;
+      font-size: 0.7rem;
+    }
+    .label-tl {
+      left: 2%;
+      top: 12%;
+    }
+    .label-tr {
+      right: 2%;
+      top: 10%;
+    }
+    .label-mr {
+      right: 2%;
+      top: 50%;
+    }
+    .label-br {
+      left: 72%;
+      bottom: 6%;
+    }
+    .label-bl {
+      right: 72%;
+      bottom: 10%;
+    }
+    .label-ml {
+      left: 2%;
+      top: 50%;
+    }
+    .cube-scene {
+      width: 80vw;
+      height: 80vw;
+      max-width: 400px;
+      max-height: 400px;
+    }
   }
 </style>
