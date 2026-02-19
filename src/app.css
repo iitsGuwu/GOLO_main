@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-dark: #060d14;
+  --bg-panel: #0c1620;
+  --bg-glass: rgba(12, 22, 32, 0.85);
+  --blueprint: #00d4ff;
+  --blueprint-dim: rgba(0, 212, 255, 0.45);
+  --blueprint-grid: rgba(0, 212, 255, 0.06);
+  --blueprint-grid-strong: rgba(0, 212, 255, 0.12);
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #3b82f6;
+  --accent-red: #ff0000;
+  --accent-red-dim: rgba(255, 0, 0, 0.5);
+  --accent-red-glow: rgba(255, 0, 0, 0.25);
+  --border: rgba(0, 212, 255, 0.2);
+  --border-red: rgba(255, 0, 0, 0.4);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit', system-ui, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text);
+  overflow: hidden;
+  height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Horizontal scroll */
+.scroll-viewport {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--blueprint-dim) var(--bg-panel);
+}
+
+.scroll-viewport::-webkit-scrollbar {
+  height: 10px;
+}
+
+.scroll-viewport::-webkit-scrollbar-track {
+  background: var(--bg-panel);
+}
+
+.scroll-viewport::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, var(--blueprint-dim), var(--accent-red-dim));
+  border-radius: 5px;
+}
+
+.scroll-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  min-height: 100vh;
+}
+
+.section {
+  flex: 0 0 100vw;
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* Unified blueprint background – all sections */
+.blueprint-bg {
+  background-color: var(--bg-dark);
+  background-image:
+    linear-gradient(var(--blueprint-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blueprint-grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.blueprint-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 212, 255, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Panel / card style used across sections */
+.blueprint-border {
+  border: 1px solid var(--border);
+  box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+}
+
+.accent-red-border {
+  border-color: var(--border-red);
+  box-shadow: 0 0 0 1px var(--accent-red-glow), 0 0 20px var(--accent-red-glow);
+}
+
+/* Section headings – shared look */
+.section-head {
+  font-size: clamp(1.5rem, 4vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 0.35rem;
+  color: var(--blueprint);
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+}
+
+.section-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0 0 2rem;
+  letter-spacing: 0.02em;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
