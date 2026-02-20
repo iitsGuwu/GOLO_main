@@ -194,7 +194,7 @@
     font-weight: 700;
     letter-spacing: 0.35em;
     color: var(--blueprint);
-    text-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
+    text-shadow: 0 0 40px rgba(255, 0, 0, 0.3);
   }
 
   .title-dot {

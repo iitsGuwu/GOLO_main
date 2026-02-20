@@ -1,49 +1,62 @@
 <script>
-  const metrics = [
-    { name: 'Throughput', value: '2.4M req/s', bar: 94, accent: true },
-    { name: 'Cache hit', value: '87%', bar: 87, accent: false },
-    { name: 'DB connections', value: '412', bar: 62, accent: false },
-    { name: 'Queue depth', value: 'Low', bar: 18, accent: false }
-  ];
+  // What's next – EP01 & EP01.5 teasers
 </script>
 
-<div class="metrics-section">
+<div class="next-section">
+  <div class="section-gutter" aria-hidden="true"></div>
+  <div class="section-content">
   <header class="section-header">
-    <h2 class="section-head">System health</h2>
-    <p class="section-sub">Current capacity and resource usage</p>
+    <h2 class="section-head">What's next</h2>
+    <p class="section-sub">EP01 & EP01.5</p>
   </header>
-  <div class="metric-bars">
-    {#each metrics as m}
-      <div class="metric-row">
-        <div class="metric-info">
-          <span class="metric-name">{m.name}</span>
-          <span class="metric-value" class:accent-red={m.accent}>{m.value}</span>
-        </div>
-        <div class="metric-track blueprint-border">
-          <div
-            class="metric-fill"
-            class:metric-fill-red={m.accent}
-            style="width: {m.bar}%"
-          ></div>
-        </div>
-      </div>
-    {/each}
+
+  <div class="next-split">
+    <div class="next-block blueprint-border">
+      <span class="block-ep">EP01</span>
+      <p class="hint">A key has been acquired. What it opens remains to be seen.</p>
+      <span class="mono cipher">[ KEY_ACQUIRED ]</span>
+    </div>
+    <div class="next-block blueprint-border accent-red-border">
+      <span class="block-ep accent-red">EP01.5</span>
+      <p class="hint">gboy BURN's. Something is heating up.</p>
+      <span class="mono cipher">[ BURN_SIGNAL ]</span>
+    </div>
   </div>
-  <div class="footer-note blueprint-border">
-    <span class="mono">Last updated: 2025-02-19 14:35 UTC</span>
-    <span class="status accent-red">All systems operational</span>
   </div>
 </div>
 
 <style>
-  .metrics-section {
-    max-width: 620px;
+  .next-section {
+    display: grid;
+    grid-template-columns: minmax(0, calc(280px + 2rem)) minmax(0, 1fr);
     width: 100%;
-    margin-left: max(calc(280px + 2rem), 2rem);
+    max-width: 100%;
+    min-width: 0;
   }
 
-  @media (max-width: 480px) {
-    .metrics-section { margin-left: max(calc(240px + 1.5rem), 1.5rem); }
+  .section-gutter {
+    min-width: 0;
+  }
+
+  .section-content {
+    padding: clamp(1.5rem, 4vw, 3rem);
+    padding-left: clamp(1rem, 3vw, 2rem);
+    min-width: 0;
+    max-width: 820px;
+  }
+
+  @media (max-width: 600px) {
+    .next-section {
+      grid-template-columns: minmax(0, calc(240px + 1.5rem)) minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 400px) {
+    .next-section {
+      grid-template-columns: 1fr;
+    }
+    .section-gutter { display: none; }
+    .section-content { max-width: none; }
   }
 
   .section-header {
@@ -57,86 +70,57 @@
     text-transform: uppercase;
     margin: 0 0 0.35rem;
     color: var(--blueprint);
-    text-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+    text-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
   }
 
   .section-sub {
     font-size: 0.9rem;
     color: var(--text-muted);
     margin: 0;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.12em;
   }
 
-  .metric-bars {
-    display: flex;
-    flex-direction: column;
-    gap: 1.35rem;
-    margin-bottom: 2rem;
+  .next-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
   }
 
-  .metric-row {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
+  @media (max-width: 640px) {
+    .next-split { grid-template-columns: 1fr; }
   }
 
-  .metric-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    align-items: baseline;
-  }
-
-  .metric-name {
-    color: var(--text-muted);
-    letter-spacing: 0.03em;
-  }
-
-  .metric-value {
-    font-family: 'JetBrains Mono', monospace;
-    color: var(--text);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-  }
-
-  .metric-value.accent-red {
-    color: var(--accent-red);
-    text-shadow: 0 0 16px var(--accent-red-glow);
-  }
-
-  .metric-track {
-    height: 10px;
-    background: var(--bg-panel);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .metric-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--blueprint-dim), var(--blueprint));
-    border-radius: 4px;
-    transition: width 0.5s ease;
-  }
-
-  .metric-fill.metric-fill-red {
-    background: linear-gradient(90deg, var(--accent-red-dim), var(--accent-red));
-    box-shadow: 0 0 20px var(--accent-red-glow);
-  }
-
-  .footer-note {
-    padding: 0.9rem 1.25rem;
+  .next-block {
+    padding: 1.5rem;
     background: var(--bg-glass);
     border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.82rem;
-    color: var(--text-muted);
     backdrop-filter: blur(12px);
   }
 
-  .footer-note .status.accent-red {
-    color: var(--accent-red);
-    font-weight: 500;
+  .block-ep {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--blueprint);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.75rem;
+  }
+
+  .next-block .hint {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--text);
+    margin: 0 0 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .cipher {
+    font-size: 0.72rem;
+    color: var(--blueprint-dim);
+    letter-spacing: 0.08em;
+  }
+
+  .next-block.accent-red-border .cipher {
+    color: var(--accent-red-dim);
   }
 </style>

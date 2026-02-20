@@ -4,18 +4,18 @@
   --bg-dark: #060d14;
   --bg-panel: #0c1620;
   --bg-glass: rgba(12, 22, 32, 0.85);
-  --blueprint: #00d4ff;
-  --blueprint-dim: rgba(0, 212, 255, 0.45);
-  --blueprint-grid: rgba(0, 212, 255, 0.06);
-  --blueprint-grid-strong: rgba(0, 212, 255, 0.12);
+  --blueprint: #ff0000;
+  --blueprint-dim: rgba(255, 0, 0, 0.45);
+  --blueprint-grid: rgba(255, 0, 0, 0.06);
+  --blueprint-grid-strong: rgba(255, 0, 0, 0.12);
   --text: #f1f5f9;
   --text-muted: #94a3b8;
-  --accent: #3b82f6;
-  --accent-red: #ff0000;
-  --accent-red-dim: rgba(255, 0, 0, 0.5);
-  --accent-red-glow: rgba(255, 0, 0, 0.25);
-  --border: rgba(0, 212, 255, 0.2);
-  --border-red: rgba(255, 0, 0, 0.4);
+  --accent: #00d4ff;
+  --accent-red: #00d4ff;
+  --accent-red-dim: rgba(0, 212, 255, 0.5);
+  --accent-red-glow: rgba(0, 212, 255, 0.25);
+  --border: rgba(255, 0, 0, 0.2);
+  --border-red: rgba(0, 212, 255, 0.4);
 }
 
 *,
@@ -95,14 +95,14 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 212, 255, 0.04) 0%, transparent 50%);
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 0, 0, 0.04) 0%, transparent 50%);
   pointer-events: none;
 }
 
 /* Panel / card style used across sections */
 .blueprint-border {
   border: 1px solid var(--border);
-  box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(12px);
 }
 
@@ -119,7 +119,7 @@ body {
   text-transform: uppercase;
   margin: 0 0 0.35rem;
   color: var(--blueprint);
-  text-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+  text-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
 }
 
 .section-sub {

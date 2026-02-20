@@ -1,97 +1,68 @@
 <script>
-  const barData = [72, 45, 88, 61, 94, 53, 78];
-  const barLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  const linePoints = [30, 45, 40, 65, 55, 80, 70];
-  const maxBar = Math.max(...barData);
-  const maxLine = Math.max(...linePoints);
+  // $GOLO – Fueling a flame: past use + future treasury
 </script>
 
-<div class="charts-section">
+<div class="golo-section">
+  <div class="section-gutter" aria-hidden="true"></div>
+  <div class="section-content">
   <header class="section-header">
-    <h2 class="section-head">Analytics</h2>
-    <p class="section-sub">Weekly throughput and engagement</p>
+    <h2 class="section-head">$GOLO</h2>
+    <p class="section-sub">Fueling a flame</p>
   </header>
-  <div class="charts-row">
-    <div class="chart-panel blueprint-border">
-      <h3>Requests by day</h3>
-      <div class="bar-chart">
-        {#each barData as val, i}
-          <div class="bar-wrap">
-            <div
-              class="bar"
-              class:accent-red={i === 4}
-              style="height: {(val / maxBar) * 100}%"
-            ></div>
-            <span class="bar-label">{barLabels[i]}</span>
-          </div>
-        {/each}
-      </div>
+
+  <div class="golo-split">
+    <div class="half blueprint-border">
+      <div class="half-label">Then</div>
+      <h3>Token use in the build</h3>
+      <p>$GOLO was used in the gboy.golo.wtf build to fuel the autonomous agent’s token launch and operations. The token acted as the economic layer for the pilote: allocation, incentives, and on-chain actions were tied to $GOLO, proving the burn engine in a real deployment.</p>
     </div>
-    <div class="chart-panel blueprint-border">
-      <h3>Latency trend (ms)</h3>
-      <div class="line-chart">
-        <svg viewBox="0 0 280 120" preserveAspectRatio="none">
-          {#each linePoints as p, i}
-            {#if i > 0}
-              <line
-                x1={(i - 1) * (280 / (linePoints.length - 1))}
-                y1={120 - (linePoints[i - 1] / maxLine) * 100}
-                x2={i * (280 / (linePoints.length - 1))}
-                y2={120 - (p / maxLine) * 100}
-                class="line-seg"
-                class:line-red={i === linePoints.length - 1}
-              />
-            {/if}
-          {/each}
-          {#each linePoints as p, i}
-            <circle
-              cx={i * (280 / (linePoints.length - 1))}
-              cy={120 - (p / maxLine) * 100}
-              r="4"
-              class="line-dot"
-              class:dot-red={i === linePoints.length - 1}
-            />
-          {/each}
-        </svg>
-        <div class="line-labels">
-          {#each barLabels as l}<span>{l}</span>{/each}
-        </div>
-      </div>
+    <div class="half blueprint-border accent-red-border">
+      <div class="half-label accent-red">Next</div>
+      <h3>Development treasury</h3>
+      <p>$GOLO will power GOLO’s growth as a development treasury: funding next phases, rewarding contributors, and sustaining the ecosystem. The same token that fueled the pilote becomes the reserve for building the next chapters—burn to mint, heists, and beyond.</p>
     </div>
   </div>
-  <div class="donut-wrap blueprint-border">
-    <h3>Traffic split</h3>
-    <div class="donut-chart">
-      <svg viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="40" fill="none" stroke="var(--bg-panel)" stroke-width="12" />
-        <circle cx="50" cy="50" r="40" fill="none" stroke="var(--accent-red)" stroke-width="12"
-          stroke-dasharray="75 226" stroke-dashoffset="0" />
-        <circle cx="50" cy="50" r="40" fill="none" stroke="var(--blueprint)" stroke-width="12"
-          stroke-dasharray="60 226" stroke-dashoffset="-75" />
-        <circle cx="50" cy="50" r="40" fill="none" stroke="#22c55e" stroke-width="12"
-          stroke-dasharray="50 226" stroke-dashoffset="-135" />
-        <circle cx="50" cy="50" r="40" fill="none" stroke="#eab308" stroke-width="12"
-          stroke-dasharray="41 226" stroke-dashoffset="-185" />
-      </svg>
-    </div>
-    <div class="donut-legend">
-      <span class="accent-red"><i style="background: var(--accent-red)"></i> API 33%</span>
-      <span><i style="background: var(--blueprint)"></i> Web 26%</span>
-      <span><i style="background: #22c55e"></i> Mobile 22%</span>
-      <span><i style="background: #eab308"></i> Other 18%</span>
-    </div>
+
+  <div class="flame-bar">
+    <span class="mono">$GOLO</span>
+    <span class="flame-dots">◆ ◆ ◆</span>
+    <span class="muted">past → future</span>
+  </div>
   </div>
 </div>
 
 <style>
-  .charts-section {
-    max-width: 960px;
+  .golo-section {
+    display: grid;
+    grid-template-columns: minmax(0, calc(280px + 2rem)) minmax(0, 1fr);
     width: 100%;
-    margin-left: max(calc(280px + 2rem), 2rem);
+    max-width: 100%;
+    min-width: 0;
   }
 
-  @media (max-width: 480px) {
-    .charts-section { margin-left: max(calc(240px + 1.5rem), 1.5rem); }
+  .section-gutter {
+    min-width: 0;
+  }
+
+  .section-content {
+    padding: clamp(1.5rem, 4vw, 3rem);
+    padding-left: clamp(1rem, 3vw, 2rem);
+    min-width: 0;
+    max-width: 920px;
+  }
+
+  @media (max-width: 600px) {
+    .golo-section {
+      grid-template-columns: minmax(0, calc(240px + 1.5rem)) minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 400px) {
+    .golo-section {
+      grid-template-columns: 1fr;
+    }
+    .section-gutter { display: none; }
+    .section-content { max-width: none; }
   }
 
   .section-header {
@@ -102,162 +73,72 @@
     font-size: clamp(1.5rem, 4vw, 1.85rem);
     font-weight: 700;
     letter-spacing: 0.08em;
-    text-transform: uppercase;
     margin: 0 0 0.35rem;
     color: var(--blueprint);
-    text-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+    text-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
   }
 
   .section-sub {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
     margin: 0;
     letter-spacing: 0.02em;
   }
 
-  .charts-row {
+  .golo-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
   }
 
-  @media (max-width: 700px) {
-    .charts-row { grid-template-columns: 1fr; }
+  @media (max-width: 640px) {
+    .golo-split { grid-template-columns: 1fr; }
   }
 
-  .chart-panel {
-    background: var(--bg-glass);
+  .half {
     padding: 1.5rem;
+    background: var(--bg-glass);
     border-radius: 4px;
     backdrop-filter: blur(12px);
   }
 
-  .chart-panel h3 {
-    margin: 0 0 1.25rem;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .bar-chart {
-    display: flex;
-    align-items: flex-end;
-    gap: 0.5rem;
-    height: 140px;
-  }
-
-  .bar-wrap {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-  }
-
-  .bar {
-    width: 100%;
-    max-width: 36px;
-    min-height: 4px;
-    background: linear-gradient(to top, var(--blueprint-dim), var(--blueprint));
-    border-radius: 4px 4px 0 0;
-    transition: height 0.4s ease;
-  }
-
-  .bar.accent-red {
-    background: linear-gradient(to top, var(--accent-red-dim), var(--accent-red));
-    box-shadow: 0 0 16px var(--accent-red-glow);
-  }
-
-  .bar-label {
-    font-size: 0.7rem;
-    color: var(--text-muted);
+  .half-label {
     font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--blueprint-dim);
+    margin-bottom: 0.75rem;
   }
 
-  .line-chart svg {
-    width: 100%;
-    height: 120px;
-    display: block;
+  .half h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 0.6rem;
+    letter-spacing: 0.03em;
   }
 
-  .line-seg {
-    stroke: var(--blueprint);
-    stroke-width: 2;
-    fill: none;
-  }
-
-  .line-seg.line-red {
-    stroke: var(--accent-red);
-  }
-
-  .line-dot {
-    fill: var(--blueprint);
-    stroke: var(--bg-dark);
-    stroke-width: 1.5;
-  }
-
-  .line-dot.dot-red {
-    fill: var(--accent-red);
-    stroke: var(--bg-dark);
-    filter: drop-shadow(0 0 6px var(--accent-red-glow));
-  }
-
-  .line-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.35rem;
-    font-size: 0.7rem;
+  .half p {
+    font-size: 0.88rem;
+    line-height: 1.55;
     color: var(--text-muted);
-    font-family: 'JetBrains Mono', monospace;
+    margin: 0;
   }
 
-  .donut-wrap {
+  .flame-bar {
+    padding: 0.7rem 1rem;
     background: var(--bg-glass);
-    padding: 1.5rem;
     border-radius: 4px;
+    border: 1px dashed var(--border);
     display: flex;
     align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    backdrop-filter: blur(12px);
-  }
-
-  .donut-wrap h3 {
-    margin: 0 0 0.5rem;
+    justify-content: center;
+    gap: 0.75rem;
     font-size: 0.8rem;
-    color: var(--text-muted);
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    width: 100%;
   }
 
-  .donut-chart svg {
-    width: 120px;
-    height: 120px;
-  }
-
-  .donut-legend {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-
-  .donut-legend span.accent-red {
-    color: var(--accent-red);
-  }
-
-  .donut-legend i {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-right: 0.5rem;
-    border-radius: 2px;
-    vertical-align: middle;
-  }
+  .flame-bar .mono { color: var(--blueprint); }
+  .flame-dots { color: var(--accent-red); font-size: 0.6rem; letter-spacing: 0.3em; }
+  .flame-bar .muted { color: var(--text-muted); }
 </style>
